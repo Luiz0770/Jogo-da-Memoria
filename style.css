@@ -1,0 +1,66 @@
+.magrao {
+    background-image: url(https://avatars.githubusercontent.com/u/99883219?v=4);
+}
+
+.bolivia {
+    background-image: url(https://avatars.githubusercontent.com/u/84139372?v=4);
+}
+
+.vitor {
+    background-image: url(https://avatars.githubusercontent.com/u/160746719?v=4);
+}
+
+.caio {
+    background-image: url(https://avatars.githubusercontent.com/u/82839819?v=4);
+}
+
+.luiz {
+    background-image: url(https://avatars.githubusercontent.com/u/84384270?v=4);
+}
+
+.rippi {
+    background-image: url(https://avatars.githubusercontent.com/u/72639715?v=4);
+}
+
+/* ===============================  Cards ========================================= */
+
+.desativada{
+    background-image: url(https://images.emojiterra.com/mozilla/1024px/2753.png);
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.imagem {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.imagem:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.10);
+}
+
+.imagem:active{
+    background-color: black; 
+}
+
+.imagem-selecionada {
+    pointer-events: none;
+    transform: scale(1.10);
+}
+
+.container-itens button {
+    margin: 10px;
+}
