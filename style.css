@@ -36,11 +36,16 @@ body {
     height: 100vh;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
 .imagem {
     width: 150px;
     height: 150px;
     background-size: cover;
-
     border: 1px solid black;
     border-radius: 20px;
     cursor: pointer;
@@ -59,8 +64,4 @@ body {
 .imagem-selecionada {
     pointer-events: none;
     transform: scale(1.10);
-}
-
-.container-itens button {
-    margin: 10px;
 }
