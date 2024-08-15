@@ -28,17 +28,38 @@
     background-image: url(https://images.emojiterra.com/mozilla/1024px/2753.png);
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 10vh;
     height: 100vh;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 4em;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-content: center;
     gap: 20px;
 }
 
@@ -64,4 +85,23 @@ body {
 .imagem-selecionada {
     pointer-events: none;
     transform: scale(1.10);
+}
+
+.btn {
+    background-color: rgb(0, 119, 255);
+    padding: 20px 45px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: .3s;
+    grid-column: span 5;
+    font-size: 20px;
+    box-shadow: 2px 2px 10px  rgba(0, 0, 0, 0.6);
+}
+
+.btn:hover {
+    border: 1px solid rgb(0, 119, 255);
+    color: rgb(0, 119, 255);
+    background-color: transparent;
+    transform: scale(1.05);
 }

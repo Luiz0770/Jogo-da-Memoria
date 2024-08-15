@@ -8,47 +8,59 @@ let listaOpcoes = [
     'rippi', 'rippi',
 ]
 
-exibirNaTela()
+let acertos = 0;
 
-const imagens = document.querySelectorAll('.imagem');
+// exibirNaTela()
+const btnIniciar = document.getElementById('iniciar').addEventListener('click', () => exibirNaTela())
 
-imagens.forEach((imagem) => {
-    imagem.addEventListener('click', () => {
-        const id = imagem.id
-        listaDeSelecionador.push(id)
-        console.log(listaDeSelecionador.length)
-        imagem.classList.add("imagem-selecionada")
-        imagem.classList.remove("desativada")
-        imagem.classList.add(`${id}`)
 
-        if (listaDeSelecionador.length == 2) {
-            setTimeout(function () {
-                verificarOpcao(id)
-            }, 1000)
-        }
+function chamarImagens() {
+    const imagens = document.querySelectorAll('.imagem');
+
+    imagens.forEach((imagem) => {
+        imagem.addEventListener('click', () => {
+            const id = imagem.id
+            listaDeSelecionador.push(id)
+            imagem.classList.add("imagem-selecionada")
+            imagem.classList.remove("desativada")
+            imagem.classList.add(`${id}`)
+    
+            if (listaDeSelecionador.length == 2) {
+                setTimeout(function () {
+                    verificarOpcao(id)
+                }, 700)
+            }
+        })
     })
-})
+}
+
 
 function verificarOpcao(id) {
     if (listaDeSelecionador[0] == listaDeSelecionador[1]) {
-        alert('Acertou')
+        //alert('Acertou')
         const opcoes = document.querySelectorAll(`#${listaDeSelecionador[0]}`)
         opcoes.forEach((opcao) => {
             opcao.remove();
         })
+        acertos++;
+        console.log(acertos)
         listaDeSelecionador = [];
-        console.log(imagens)
+        
+        if (acertos > 5) {
+            reiniciar()
+        }
+        
     }
     else {
-        alert('Errou')
+        //alert('Errou')
         listaDeSelecionador = [];
         const opcoes = document.querySelectorAll('.imagem-selecionada')
-        console.log(opcoes)
+        
         opcoes.forEach((opcao) => {
             opcao.classList.remove("imagem-selecionada")
             opcao.classList.remove(`${id}`)
             opcao.classList.add("desativada")
-            console.log(opcao)
+            
         })
     }
 }
@@ -64,9 +76,11 @@ function embaralharOpcoes() {
 function exibirNaTela() {
     embaralharOpcoes()
     const container = document.querySelector('.container')
+    container.innerHTML = ''
     for (let i = 0; i < listaOpcoes.length; i++ ) {
         container.appendChild(criarOpcao(i))
     }
+    chamarImagens()
 }
 
 function criarOpcao(i) {
@@ -75,4 +89,14 @@ function criarOpcao(i) {
     button.classList.add("desativada")
     button.id = listaOpcoes[i]
     return button
+}
+
+function reiniciar() {
+    const container = document.querySelector('.container')
+    container.innerHTML = `<button class='btn' id="reiniciar">Reiniciar</button>`
+    const btnReiniciar = document.getElementById('reiniciar').addEventListener('click', () => {
+        //location.reload();
+        acertos = 0
+        exibirNaTela()
+    })
 }
